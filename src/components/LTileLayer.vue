@@ -6,48 +6,47 @@ const props = {
   url: String,
   attribution: {
     type: String,
-    custom: true
+    custom: true,
   },
   detectRetina: {
     type: Boolean,
     custom: false,
-    default: false
+    default: false,
   },
   token: {
     type: String,
-    custom: true
+    custom: true,
   },
   opacity: {
     type: Number,
     custom: false,
-    default: 1.0
+    default: 1.0,
   },
   zIndex: {
     type: Number,
-    default: 1
+    default: 1,
   },
   options: {
     type: Object,
     default: function() {
       return {};
-    }
+    },
   },
   tms: {
     type: Boolean,
-    default: false
+    default: false,
   },
   tileLayerClass: {
     type: Function,
-    custom: true,
-    default: L.tileLayer
+    default: L.tileLayer,
   },
   layerType: {
     type: String,
-    default: undefined
+    default: undefined,
   },
   name: {
     type: String,
-    default: undefined
+    default: undefined,
   },
   visible: {
     type: Boolean,
@@ -61,10 +60,10 @@ export default {
   props: props,
   mounted() {
     const options = this.options;
-    const otherPropertytoInitialize = [ "attribution", "token", "detectRetina", "opacity", "zIndex" ];
+    const otherPropertytoInitialize = ['attribution', 'token', 'detectRetina', 'opacity', 'zIndex'];
     for (var i = 0; i < otherPropertytoInitialize.length; i++) {
       const propName = otherPropertytoInitialize[i];
-      if(this[propName] !== undefined) {
+      if (this[propName] !== undefined) {
         options[propName] = this[propName];
       }
     }
@@ -81,7 +80,7 @@ export default {
     },
     setToken(val) {
       this.options.token = val;
-    }
+    },
   },
   methods: {
     setVisible(newVal, oldVal) {
@@ -93,13 +92,13 @@ export default {
           this.parentContainer.removeLayer(this);
         }
       }
-    }
+    },
   },
   beforeDestroy() {
     this.parentContainer.removeLayer(this);
   },
   render() {
     return null;
-  }
+  },
 };
 </script>
