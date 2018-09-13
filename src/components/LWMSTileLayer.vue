@@ -6,21 +6,21 @@ const props = {
   baseUrl: String,
   layers: {
     type: String,
-    default: ''
+    default: '',
   },
   styles: {
     type: String,
-    default: ''
+    default: '',
   },
   format: {
     type: String,
-    default: 'image/jpeg'
+    default: 'image/jpeg',
   },
   options: {
     type: Object,
     default: function() {
       return {};
-    }
+    },
   },
   transparent: {
     type: Boolean,
@@ -28,31 +28,31 @@ const props = {
   },
   version: {
     type: String,
-    default: '1.1.1'
+    default: '1.1.1',
   },
   crs: {
     default: null,
   },
   upperCase: {
     type: Boolean,
-    default: false
+    default: false,
   },
   opacity: {
     type: Number,
     custom: false,
-    default: 1.0
+    default: 1.0,
   },
   zIndex: {
     type: Number,
-    default: 1
+    default: 1,
   },
   layerType: {
     type: String,
-    default: undefined
+    default: undefined,
   },
   name: {
     type: String,
-    default: undefined
+    default: undefined,
   },
   visible: {
     type: Boolean,
@@ -63,12 +63,22 @@ const props = {
 export default {
   name: 'LWMSTileLayer',
   props: props,
-  mounted () {
+  mounted() {
     const options = this.options;
-    const otherPropertytoInitialize = [ 'layers', 'styles', 'format', 'transparent', 'version', 'crs', 'upperCase', 'zIndex', 'opacity' ];
+    const otherPropertytoInitialize = [
+      'layers',
+      'styles',
+      'format',
+      'transparent',
+      'version',
+      'crs',
+      'upperCase',
+      'zIndex',
+      'opacity',
+    ];
     for (var i = 0; i < otherPropertytoInitialize.length; i++) {
       const propName = otherPropertytoInitialize[i];
-      if(this[propName] !== undefined) {
+      if (this[propName] !== undefined) {
         options[propName] = this[propName];
       }
     }
@@ -88,13 +98,13 @@ export default {
           this.parentContainer.removeLayer(this);
         }
       }
-    }
+    },
   },
   beforeDestroy() {
     this.parentContainer.removeLayer(this);
   },
   render() {
     return null;
-  }
-}
+  },
+};
 </script>

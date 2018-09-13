@@ -38,6 +38,7 @@ const props = {
   },
   tileLayerClass: {
     type: Function,
+    custom: true,
     default: L.tileLayer
   },
   layerType: {
