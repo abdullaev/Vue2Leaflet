@@ -71,7 +71,7 @@ export default {
     L.DomEvent.on(this.mapObject, this.$listeners);
     propsBinder(this, this.mapObject, props);
     this.parentContainer = findRealParent(this.$parent);
-    this.parentContainer.addLayer(this.mapObject, !this.visible);
+    this.parentContainer.addLayer(this, !this.visible);
   },
   methods: {
     setAttribution(val, old) {
@@ -87,15 +87,15 @@ export default {
       if (newVal == oldVal) return;
       if (this.mapObject) {
         if (newVal) {
-          this.parentContainer.addLayer(this.mapObject);
+          this.parentContainer.addLayer(this);
         } else {
-          this.parentContainer.removeLayer(this.mapObject);
+          this.parentContainer.removeLayer(this);
         }
       }
     },
   },
   beforeDestroy() {
-    this.parentContainer.removeLayer(this.mapObject);
+    this.parentContainer.removeLayer(this);
   },
   render() {
     return null;
