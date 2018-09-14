@@ -89,13 +89,13 @@ export default {
         if (newVal) {
           this.parentContainer.addLayer(this);
         } else {
-          this.parentContainer.removeLayer(this);
+          this.parentContainer.removeLayer(this.mapObject);
         }
       }
     },
   },
   beforeDestroy() {
-    this.parentContainer.removeLayer(this);
+    this.parentContainer.removeLayer(this.mapObject);
   },
   render() {
     return null;
